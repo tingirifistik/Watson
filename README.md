@@ -1,24 +1,24 @@
 <h3>Sites</h3>
 
-Twitter
-Instagram
-Reddit
-Vk
-SnapChat
-TikTok
-Pinterest
-Youtube
-GitHub
-StackOverFlow
-Medium
-YazBel
-Replit
-TryHackMe
-HackerOne
-Duolingo
-Steam
-Lichess
-Twitch
+Twitter<br>
+Instagram<br>
+Reddit<br>
+Vk<br>
+SnapChat<br>
+TikTok<br>
+Pinterest<br>
+Youtube<br>
+GitHub<br>
+StackOverFlow<br>
+Medium<br>
+YazBel<br>
+Replit<br>
+TryHackMe<br>
+HackerOne<br>
+Duolingo<br>
+Steam<br>
+Lichess<br>
+Twitch<br>
 BuyMeACoffee
 
 
