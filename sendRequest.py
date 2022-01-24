@@ -188,3 +188,12 @@ class UserChecker():
             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Twitch: {Style.RESET_ALL}"+ self.notFound)
         else:
             pass
+        
+    def BuyMeaCoffee(self, username):
+        coffee = requests.get("https://www.buymeacoffee.com/"+username)
+        if coffee.status_code == 404:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}BuyMeACoffee: {Style.RESET_ALL}"+ self.notFound)
+        elif coffee.status_code == 200:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}BuyMeACoffee: {Style.RESET_ALL}https://www.buymeacoffee.com/{username}")
+        else:
+            pass
