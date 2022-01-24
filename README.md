@@ -1,28 +1,29 @@
-<h3>Sites</h3>
+<h2>Sites</h2>
 
-Twitter<br>
-Instagram<br>
-Reddit<br>
-Vk<br>
-SnapChat<br>
-TikTok<br>
-Pinterest<br>
-Youtube<br>
-GitHub<br>
-StackOverFlow<br>
-Medium<br>
-YazBel<br>
-Replit<br>
-TryHackMe<br>
-HackerOne<br>
-Duolingo<br>
-Steam<br>
-Lichess<br>
-Twitch<br>
-BuyMeACoffee
+*Twitter<br>
+*Instagram<br>
+*Reddit<br>
+*Vk<br>
+*SnapChat<br>
+*TikTok<br>
+*Pinterest<br>
+*Youtube<br>
+*GitHub<br>
+*StackOverFlow<br>
+*Medium<br>
+*YazBel<br>
+*Replit<br>
+*TryHackMe<br>
+*HackerOne<br>
+*Duolingo<br>
+*Steam<br>
+*Lichess<br>
+*Twitch<br>
+*BuyMeACoffee
 
 
-<h3>Installation</h3>
+
+<h2>Installation</h2>
 
 ```
 git clone https://github.com/tingirifistik/Watson.git
