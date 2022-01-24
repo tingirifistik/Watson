@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from colorama import Fore, Style
+from json import dumps
 
 class UserChecker():
     def __init__(self, lang):
@@ -175,5 +176,15 @@ class UserChecker():
             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Medium: {Style.RESET_ALL}"+ self.notFound)
         elif medium.status_code == 200:
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Medium: {Style.RESET_ALL}https://medium.com/@{username}")
+        else:
+            pass
+    
+    def Twitch(self, username):
+        data = {"operationName":"PlaybackAccessToken_Template","query":"query PlaybackAccessToken_Template($login: String!, $isLive: Boolean!, $vodID: ID!, $isVod: Boolean!, $playerType: String!) {  streamPlaybackAccessToken(channelName: $login, params: {platform: \"web\", playerBackend: \"mediaplayer\", playerType: $playerType}) @include(if: $isLive) {    value    signature    __typename  }  videoPlaybackAccessToken(id: $vodID, params: {platform: \"web\", playerBackend: \"mediaplayer\", playerType: $playerType}) @include(if: $isVod) {    value    signature    __typename  }}","variables":{"isLive":True,"login":username,"isVod":False,"vodID":"","playerType":"site"}}
+        twitch = requests.post("https://gql.twitch.tv/gql", data=dumps(data), headers={"Client-Id": "kimne78kx3ncx6brgo4mv6wki5h1ko"})
+        if twitch.json()["data"]["streamPlaybackAccessToken"] != None:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Twitch: {Style.RESET_ALL}https://twitch.tv/{username}")
+        elif twitch.json()["data"]["streamPlaybackAccessToken"] == None:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Twitch: {Style.RESET_ALL}"+ self.notFound)
         else:
             pass
