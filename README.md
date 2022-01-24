@@ -1,3 +1,27 @@
+<h3>Sites</h3>
+
+Twitter
+Instagram
+Reddit
+Vk
+SnapChat
+TikTok
+Pinterest
+Youtube
+GitHub
+StackOverFlow
+Medium
+YazBel
+Replit
+TryHackMe
+HackerOne
+Duolingo
+Steam
+Lichess
+Twitch
+BuyMeACoffee
+
+
 <h3>Installation</h3>
 
 ```
