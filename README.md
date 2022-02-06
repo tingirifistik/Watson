@@ -7,6 +7,10 @@
 * SnapChat<br>
 * TikTok<br>
 * Pinterest<br>
+* Ekşi Sözlük<br>
+* Forum.dev<br>
+* Technopat<br>
+* İnci Sözlük<br>
 * Youtube<br>
 * GitHub<br>
 * StackOverFlow<br>
