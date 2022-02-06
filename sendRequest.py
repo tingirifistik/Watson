@@ -7,10 +7,12 @@ class UserChecker():
     def __init__(self, lang):
         self.sentence = "(This profile may not be the profile of the user you are looking for!)"
         self.notFound = "User not found"
+        self.found = "User found"
         if lang == "tr":
             self.sentence = "(Bu profil, aradığınız kullanıcının profili olmayabilir!)"
             self.notFound = "Kullanıcı bulunamadı"
-    
+            self.found = "Kullanıcı bulundu"
+        
     def Twitter(self, username):
         header = {
         'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
@@ -197,3 +199,35 @@ class UserChecker():
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}BuyMeACoffee: {Style.RESET_ALL}https://www.buymeacoffee.com/{username}")
         else:
             pass
+    
+    def eksi(self, username):
+        eksi = BeautifulSoup(requests.get("https://eksisozluk.com:443/biri/"+username, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0"}).content, "html.parser")
+        try:
+            eksi.find("span", {"class":"field-validation-error"}).text
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}EksiSozluk: {Style.RESET_ALL}"+ self.notFound)
+        except AttributeError:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}EksiSozluk: {Style.RESET_ALL}https://eksisozluk.com/biri/{username}")
+            
+    def forumDev(self, username):
+        forumdev =  requests.get(f"https://forum.dev:443/index.php?members/find&q={username}&_xfRequestUri=%2F&_xfWithData=1&_xfToken=1644158403%2C41fa4d86d31f899cf2a10b162b176e79&_xfResponseType=json",  cookies={"xf_csrf": "7bzd3JhmM19VlaRt"})    
+        try:
+            forumdev.json()["results"][0]["id"]
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Forum.dev: {Style.RESET_ALL}"+ self.found)
+        except IndexError:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Forum.dev: {Style.RESET_ALL}"+ self.notFound)
+            
+    def technopat(self, username):
+        technopat = requests.get(f"https://www.technopat.net:443/sosyal/index.php?members/find&q={username}&_xfRequestUri=%2F&_xfWithData=1&_xfToken=1644159616%2Cf7b8804c9fc9e843089cce7e3dfe72fe&_xfResponseType=json", cookies={"xf_csrf": "S76M7bN9JapI9hpZ"})
+        try:
+            technopat.json()["results"][0]["id"]
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Technopat: {Style.RESET_ALL}"+ self.found)
+        except IndexError:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Technopat: {Style.RESET_ALL}"+ self.notFound)
+    
+    def inciSozluk(self, username):
+        inci = BeautifulSoup(requests.get("http://incisozluk.com.tr:80/u/"+username).content, "html.parser")
+        try:
+            inci.find("div", {"class":"alert alert-danger"}).text
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}InciSozluk: {Style.RESET_ALL}"+ self.notFound)
+        except AttributeError:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}InciSozluk: {Style.RESET_ALL}http://incisozluk.com.tr/u/{username}")
