@@ -208,21 +208,21 @@ class UserChecker():
         except AttributeError:
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}EksiSozluk: {Style.RESET_ALL}https://eksisozluk.com/biri/{username}")
             
-    def forumDev(self, username):
-        forumdev =  requests.get(f"https://forum.dev:443/index.php?members/find&q={username}&_xfRequestUri=%2F&_xfWithData=1&_xfToken=1644158403%2C41fa4d86d31f899cf2a10b162b176e79&_xfResponseType=json",  cookies={"xf_csrf": "7bzd3JhmM19VlaRt"})    
-        try:
-            forumdev.json()["results"][0]["id"]
-            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Forum.dev: {Style.RESET_ALL}"+ self.found)
-        except IndexError:
-            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Forum.dev: {Style.RESET_ALL}"+ self.notFound)
+#     def forumDev(self, username):
+#         forumdev =  requests.get(f"https://forum.dev:443/index.php?members/find&q={username}&_xfRequestUri=%2F&_xfWithData=1&_xfToken=1644158403%2C41fa4d86d31f899cf2a10b162b176e79&_xfResponseType=json",  cookies={"xf_csrf": "7bzd3JhmM19VlaRt"})    
+#         try:
+#             forumdev.json()["results"][0]["id"]
+#             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Forum.dev: {Style.RESET_ALL}"+ self.found)
+#         except IndexError:
+#             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Forum.dev: {Style.RESET_ALL}"+ self.notFound)
             
-    def technopat(self, username):
-        technopat = requests.get(f"https://www.technopat.net:443/sosyal/index.php?members/find&q={username}&_xfRequestUri=%2F&_xfWithData=1&_xfToken=1644159616%2Cf7b8804c9fc9e843089cce7e3dfe72fe&_xfResponseType=json", cookies={"xf_csrf": "S76M7bN9JapI9hpZ"})
-        try:
-            technopat.json()["results"][0]["id"]
-            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Technopat: {Style.RESET_ALL}"+ self.found)
-        except IndexError:
-            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Technopat: {Style.RESET_ALL}"+ self.notFound)
+#     def technopat(self, username):
+#         technopat = requests.get(f"https://www.technopat.net:443/sosyal/index.php?members/find&q={username}&_xfRequestUri=%2F&_xfWithData=1&_xfToken=1644159616%2Cf7b8804c9fc9e843089cce7e3dfe72fe&_xfResponseType=json", cookies={"xf_csrf": "S76M7bN9JapI9hpZ"})
+#         try:
+#             technopat.json()["results"][0]["id"]
+#             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Technopat: {Style.RESET_ALL}"+ self.found)
+#         except IndexError:
+#             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Technopat: {Style.RESET_ALL}"+ self.notFound)
     
     def inciSozluk(self, username):
         inci = BeautifulSoup(requests.get("http://incisozluk.com.tr:80/u/"+username).content, "html.parser")
