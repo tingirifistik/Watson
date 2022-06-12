@@ -58,9 +58,14 @@ while 1:
         continue
     print(Style.RESET_ALL)
     system("cls||clear")
-    for attribute in dir(UserChecker):
-        attribute_value = getattr(UserChecker, attribute)
-        if callable(attribute_value):
-            if attribute.startswith('__') == False:
-                exec("UserChecker('{}').{}('{}')".format(language, attribute, username))
-    input(enter)
+    with open(f"{username}-profile.txt", "w", encoding="utf-8") as f:
+        for attribute in dir(UserChecker):
+            attribute_value = getattr(UserChecker, attribute)
+            if callable(attribute_value):
+                if attribute.startswith('__') == False:
+                    att = str(eval("UserChecker('{}').{}('{}')".format(language, attribute, username)))
+                    if att == "None":
+                        pass
+                    else:
+                        f.write(att+"\n")
+        input(enter)
