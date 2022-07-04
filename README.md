@@ -6,6 +6,8 @@
 * Vk<br>
 * SnapChat<br>
 * TikTok<br>
+* SoundCloud<br>
+* Genius<br>
 * Pinterest<br>
 * Ekşi Sözlük<br>
 * İnci Sözlük<br>
