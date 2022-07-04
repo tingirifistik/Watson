@@ -222,7 +222,7 @@ class UserChecker():
         else:
             pass
     
-    def eksi(self, username):
+    def Eksi(self, username):
         eksi = BeautifulSoup(requests.get("https://eksisozluk.com:443/biri/"+username, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0"}).content, "html.parser")
         try:
             eksi.find("span", {"class":"field-validation-error"}).text
@@ -231,7 +231,7 @@ class UserChecker():
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}EksiSozluk: {Style.RESET_ALL}https://eksisozluk.com/biri/{username}")
             return ("EksiSozluk: https://eksisozluk.com/biri/" + username)
     
-    def inciSozluk(self, username):
+    def InciSozluk(self, username):
         inci = BeautifulSoup(requests.get("http://incisozluk.com.tr:80/u/"+username).content, "html.parser")
         try:
             inci.find("div", {"class":"alert alert-danger"}).text
@@ -239,3 +239,23 @@ class UserChecker():
         except AttributeError:
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}InciSozluk: {Style.RESET_ALL}http://incisozluk.com.tr/u/{username}")
             return ("InciSozluk: http://incisozluk.com.tr/u/" + username)
+
+    def Genius(self, username):
+        genius = requests.get("https://genius.com/"+username)
+        if genius.status_code == 404:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Genius: {Style.RESET_ALL}"+ self.notFound)
+        elif genius.status_code == 200:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Genius: {Style.RESET_ALL}https://genius.com/{username}")
+            return ("Genius: https://genius.com/" + username)
+        else:
+            pass
+        
+    def Soundcloud(self, username):
+        sc = requests.get("https://soundcloud.com/"+username)
+        if sc.status_code == 404:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}SoundCloud: {Style.RESET_ALL}"+ self.notFound)
+        elif sc.status_code == 200:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}SoundCloud: {Style.RESET_ALL}https://soundcloud.com/{username}")
+            return ("Soundcloud: https://soundcloud.com/" + username)
+        else:
+            pass
