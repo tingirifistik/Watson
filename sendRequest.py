@@ -22,7 +22,7 @@ class UserChecker():
         try:
             twitter.json()["errors"]
             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Twitter: {Style.RESET_ALL}"+ self.notFound)
-        except KeyError:
+        except:
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Twitter: {Style.RESET_ALL}https://twitter.com/{username}")
             return ("Twitter: https://twitter.com/" + username)
              
@@ -140,9 +140,9 @@ class UserChecker():
     def SnapChat(self, username):
         snap = requests.post(f"https://accounts.snapchat.com/accounts/get_username_suggestions?requested_username={username}&xsrf_token=PlEcin8s5H600toD4Swngg",
                             headers={"Cookie": "xsrf_token=PlEcin8s5H600toD4Swngg; sc-cookies-accepted=true; web_client_id=b1e4a3c7-4a38-4c1a-9996-2c4f24f7f956; oauth_client_id=c2Nhbg=="})
-        if snap.json()["reference"]["status_code"] == "OK":
+        if snap.json()["value"]["status_code"] == "OK":
             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}SnapChat: {Style.RESET_ALL}"+ self.notFound)
-        if snap.json()["reference"]["status_code"] == "TAKEN":
+        if snap.json()["value"]["status_code"] == "TAKEN":
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}SnapChat: {Style.RESET_ALL}https://www.snapchat.com/add/{username}")
             return ("SnapChat: https://www.snapchat.com/add/" + username)
         else:
@@ -257,5 +257,15 @@ class UserChecker():
         elif sc.status_code == 200:
             print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}SoundCloud: {Style.RESET_ALL}https://soundcloud.com/{username}")
             return ("Soundcloud: https://soundcloud.com/" + username)
+        else:
+            pass
+
+    def vsco(self, username):
+        vsco = requests.get("https://vsco.co/"+username)
+        if vsco.status_code == 404:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}VSCO: {Style.RESET_ALL}"+ self.notFound)
+        elif vsco.status_code == 200:
+            print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}VSCO: {Style.RESET_ALL}https://vsco.co/{username}")
+            return ("VSCO: https://vsco.co/" + username)
         else:
             pass
