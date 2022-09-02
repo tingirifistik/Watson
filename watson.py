@@ -47,7 +47,7 @@ while 1:
  / /_/ / /  _      | |/ |/ / /_/ / /_(__  ) /_/ / / / /
 /_____/_/  (_)     |__/|__/\__,_/\__/____/\____/_/ /_/
 
-                                  by {}@_tingirifistik
+                                  by {}@tingirifistik
 """.format(Fore.LIGHTMAGENTA_EX))
     print(Style.RESET_ALL+username+ Fore.LIGHTYELLOW_EX, end="")
     username = input()
