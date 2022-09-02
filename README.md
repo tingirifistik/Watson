@@ -5,6 +5,7 @@
 * Reddit<br>
 * Vk<br>
 * SnapChat<br>
+* VSCO<br>
 * TikTok<br>
 * SoundCloud<br>
 * Genius<br>
