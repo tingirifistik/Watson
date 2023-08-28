@@ -5,7 +5,7 @@ from json import dumps
 
 class UserChecker():
     def __init__(self, lang):
-        self.sentence = "(This profile may not be the profile of the user you are looking for!)"
+        self.sentence = "(This profile may not be the profile you are looking for!)"
         self.notFound = "User not found"
         self.found = "User found"
         if lang == "tr":
