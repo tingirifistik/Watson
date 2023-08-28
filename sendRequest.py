@@ -69,12 +69,12 @@ class UserChecker():
         try:
             replit = requests.get(f"https://repl.it/@{username}")
             if replit.status_code == 200:
-                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Repl.it: {Style.RESET_ALL}https://repl.it/@{username}")
-                return ("Repl.it: https://repl.it/@" + username)
+                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Replit: {Style.RESET_ALL}https://repl.it/@{username}")
+                return ("Replit: https://repl.it/@" + username)
             else:
                 raise
         except:
-            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Repl.it: {Style.RESET_ALL}"+ self.notFound)
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Replit: {Style.RESET_ALL}"+ self.notFound)
             
 
     def TryHackme(self, username):
@@ -320,3 +320,85 @@ class UserChecker():
                 raise   
         except:
             print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}SnapChat: {Style.RESET_ALL}"+ self.notFound)
+
+
+    def Ok(self, username):
+        try:
+            url = "https://ok.ru:443/web-api/v2/search/portal"
+            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0", "Accept": "application/json, text/javascript, */*; q=0.01", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "Referer": "https://ok.ru/search?tin", "Tkn": "undefined", "Strd": "false", "Strv": "null", "Msver": "V1", "Ok-Screen": "anonymSearchResult", "Content-Type": "text/plain;charset=UTF-8", "Origin": "https://ok.ru", "Dnt": "1", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Te": "trailers"}
+            json={"id": 5, "parameters": {"filters": {"st.grmode": "Groups", "st.mode": "Users", "st.query": username}, "query": username}}
+            ok = requests.post(url, headers=headers, json=json)
+            try:
+                profile = ok.json()["result"]["users"]["values"]["results"][0]["user"]["href"]
+                if len(ok.json()["result"]["users"]["values"]["results"]) == 1:
+                    print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Ok: {Style.RESET_ALL}https://ok.ru"+profile)
+                    return ("Ok: https://ok.ru" + profile)
+                elif len(ok.json()["result"]["users"]["values"]["results"]) > 1:
+                    print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Ok: {Style.RESET_ALL}https://ok.ru"+profile+"  "+self.sentence)
+                    return ("Ok: https://ok.ru" + profile+"  "+self.sentence)
+            except KeyError:
+                raise
+        except:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Ok: {Style.RESET_ALL}"+ self.notFound)
+            
+    
+    def Izlesene(self, username):
+        try:
+            izlesene = requests.get(f"https://www.izlesene.com:443/kanal/{username}")
+            if izlesene.status_code == 200:
+                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Izlesene: {Style.RESET_ALL}https://www.izlesene.com/kanal/{username}")
+                return ("Izlesene:"+ "https://www.izlesene.com/kanal/{username}")
+            else:
+                raise
+        except:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Izlesene: {Style.RESET_ALL}"+ self.notFound)
+            
+    
+    def Tumblr(self, username):
+        try:
+            tum = requests.get(f"https://www.tumblr.com:443/{username}", allow_redirects=False)
+            if tum.status_code == 200:
+                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Tumblr: {Style.RESET_ALL}https://www.tumblr.com/{username}")
+                return ("Tumblr:"+ "https://www.tumblr.com/{username}")
+            else:
+                raise
+        except:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Tumblr: {Style.RESET_ALL}"+ self.notFound)
+    
+    
+    def Disqus(self, username):
+        try:
+            disqus = requests.get(f"https://disqus.com:443/by/{username}/")
+            if disqus.status_code == 200:
+                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Disqus: {Style.RESET_ALL}https://disqus.com/by/{username}")
+                return ("Disqus:"+ "https://disqus.com/by/{username}")
+            else:
+                raise
+        except:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Disqus: {Style.RESET_ALL}"+ self.notFound)
+    
+    
+    def KizlarSoruyor(self, username):
+        try:
+            url = "https://www.kizlarsoruyor.com:443/uye/"+username
+            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "Upgrade-Insecure-Requests": "1", "Dnt": "1", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "same-origin", "Sec-Fetch-Site": "same-origin", "Te": "trailers"}
+            kiz = requests.get(url, headers=headers)
+            if kiz.status_code == 200:
+                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Kizlarsoruyor: {Style.RESET_ALL}https://www.kizlarsoruyor.com/uye/{username}")
+                return ("Kizlarsoruyor:"+ "https://www.kizlarsoruyor.com/uye/{username}")
+            else:
+                raise
+        except:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Kizlarsoruyor: {Style.RESET_ALL}"+ self.notFound)
+    
+    
+    def Onedio(self, username):
+        try:
+            onedio = requests.get("https://onedio.com:443/profil/"+username)
+            if onedio.status_code == 200:
+                print(f"[{Fore.LIGHTGREEN_EX}+{Style.RESET_ALL}] {Fore.LIGHTGREEN_EX}Onedio: {Style.RESET_ALL}https://onedio.com/profil/{username}")
+                return ("Onedio:"+ "https://onedio.com/profil/{username}")
+            else:
+                raise
+        except:
+            print(f"[{Fore.LIGHTRED_EX}-{Style.RESET_ALL}] {Fore.LIGHTRED_EX}Onedio: {Style.RESET_ALL}"+ self.notFound)
