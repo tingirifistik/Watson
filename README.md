@@ -7,6 +7,7 @@
 * Instagram<br>
 * Reddit<br>
 * Vk<br>
+* Ok<br>
 * SnapChat<br>
 * VSCO<br>
 * TikTok<br>
@@ -14,10 +15,15 @@
 * Genius<br>
 * Ekşi Sözlük<br>
 * İnci Sözlük<br>
+* KizlarSoruyor<br>
+* Onedio<br>
+* Disqus<br>
+* İzlesene<br>
 * Youtube<br>
 * GitHub<br>
 * StackOverFlow<br>
 * Medium<br>
+* Tumblr<br>
 * YazBel<br>
 * Replit<br>
 * TryHackMe<br>
